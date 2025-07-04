@@ -1,11 +1,11 @@
 import { HeaderItem } from "../../../../types/menu";
 
 export const headerData: HeaderItem[] = [
-    { label: 'About us', href: '/#aboutus' },
-    { label: 'Services', href: '/#services' },
-    { label: 'Work', href: '/#work' },
-    { label: 'Team', href: '/#team' },
-    { label: 'Pricing', href: '/#pricing' },
-    { label: 'Awards', href: '/#awards' },
-    { label: 'Contact', href: '/contact' },
+  { label: "Beranda", href: "/#aboutus" },
+  { label: "Profil", href: "/#services" },
+  { label: "Berita", href: "/#work" },
+  { label: "Pelayanan", href: "/#team" },
+  { label: "Informasi PAD", href: "/#pricing" },
+  { label: "Cek Pajak Ranmor", href: "/#awards" },
+  { label: "Samsat", href: "/contact" },
 ];
