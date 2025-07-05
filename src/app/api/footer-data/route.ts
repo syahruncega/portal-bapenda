@@ -43,7 +43,7 @@ const footerData = {
     links: [
       { name: "Pemprov Sulawesi Tenggara", url: "https://sultraprov.go.id" },
       { name: "SP4N Lapor", url: "https://lapor.go.id" },
-      { name: "Sigap", url: "https://sigap.sultraprob.go.id" },
+      { name: "SIGAP", url: "https://sigap.sultraprob.go.id" },
       { name: "Documentation", url: "/documentation" },
     ],
   },
@@ -54,7 +54,7 @@ const footerData = {
     email: "bapenda@sultraprov.go.id",
     phone: "+62 811 4020 5527",
   },
-  copyright: "©2025 Awake. All Rights Reserved",
+  copyright: "©2025 BAPENDA SULTRA. All Rights Reserved",
 };
 
 export const GET = async () => {

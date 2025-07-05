@@ -6,6 +6,8 @@ import {
 } from "@notionhq/client";
 import React from "react";
 
+import { NotionAPI } from "notion-client";
+
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN!,
 });
@@ -13,7 +15,7 @@ export const notion = new Client({
 export const fetchNews = React.cache(() => {
   return notion.databases.query({
     database_id: process.env.NOTION_DB_ID!,
-    sorts: [{ direction: "ascending", timestamp: "created_time" }],
+    sorts: [{ direction: "descending", timestamp: "created_time" }],
     filter: {
       property: "status",
       status: {
@@ -44,3 +46,12 @@ export const fetchPageBlocks = React.cache((pageId: string) => {
     })
     .then((res) => res.results as BlockObjectResponse[]);
 });
+
+const api = new NotionAPI({
+  authToken: process.env.NOTION_TOKEN!, // Ini penting untuk private page
+});
+
+export const getNotionPage = async (pageId: string) => {
+  const recordMap = await api.getPage(pageId);
+  return recordMap;
+};
