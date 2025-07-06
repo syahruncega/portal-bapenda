@@ -45,8 +45,8 @@ const HeroContent: FC<{ data: any }> = ({ data }) => {
                       height={500}
                       quality={100}
                       className="rounded-2xl border-2 border-white"
-                      placeholder="blur"
-                      blurDataURL={item.properties.image.files[0].file.url}
+                      // placeholder="blur"
+                      // blurDataURL={item.properties.image.files[0].file.url}
                       unoptimized={true}
                     />
                   </CarouselItem>
