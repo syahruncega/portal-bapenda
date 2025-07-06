@@ -11,6 +11,8 @@ import {
 } from "@tabler/icons-react";
 import NotionPage from "@/app/components/notion-renderer";
 
+export const dynamic = "force-dynamic";
+
 type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -39,7 +41,14 @@ export default async function Page(props: {
     notFound();
   }
 
-  const recordMap = await getNotionPage(post.id);
+  let recordMap;
+  try {
+    recordMap = await getNotionPage(post.id);
+  } catch (err) {
+    console.error("Failed to fetch Notion page:", err);
+    notFound();
+  }
+
   const createdAt = new Date(post.properties.created?.created_time);
 
   return (
