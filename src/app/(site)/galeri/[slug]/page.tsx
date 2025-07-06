@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC } from "react";
-import { getBeritaBySlug, getNotionPage } from "@/lib/notion";
+import { getGaleriBySlug, getNotionPage } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import NextImage from "next/image";
 import { Button } from "@/app/components/ui/button";
@@ -14,7 +14,7 @@ import NotionPage from "@/app/components/notion-renderer";
 const Page: FC<{ params: { slug: string } }> = async ({ params }) => {
   const { slug } = await params;
 
-  const post = await getBeritaBySlug(slug);
+  const post = await getGaleriBySlug(slug);
 
   if (!post) {
     notFound();
@@ -70,9 +70,7 @@ const Page: FC<{ params: { slug: string } }> = async ({ params }) => {
             </div>
           </div>
         </div>
-        <div className="text-justify">
-          <NotionPage recordMap={recordMap} />
-        </div>
+        <NotionPage recordMap={recordMap} />
       </div>
     </article>
   );

@@ -5,19 +5,19 @@ type HeaderProps = object;
 const Logo: React.FC<HeaderProps> = () => {
   return (
     <Link href="/">
-      <div className="dark:hidden text-2xl font-bold">BAPENDA</div>
-      <div className="dark:block hidden text-2xl font-bold">BAPENDA</div>
-      {/* <Image
-        src="/images/logo/logo.svg"
+      {/* <div className="dark:hidden text-2xl font-bold">BAPENDA</div>
+      <div className="dark:block hidden text-2xl font-bold">BAPENDA</div> */}
+      <Image
+        src="/images/logo/bapenda-logo.png"
         alt="logo"
-        width={117}
+        width={160}
         height={34}
-        style={{ width: "auto", height: "auto" }}
+        // style={{ width: "auto", height: "auto" }}
         quality={100}
         priority={true}
         className="dark:hidden"
       />
-      <Image
+      {/* <Image
         src="/images/logo/DarkModeLogo.svg"
         alt="logo"
         width={160}

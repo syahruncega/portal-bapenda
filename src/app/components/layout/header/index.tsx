@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -5,11 +6,19 @@ import { signOut, useSession } from "next-auth/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import HeaderLink from "./Navigation/HeaderLink";
 import { headerData } from "./Navigation/Menudata";
 import Logo from "./Logo";
 import MobileHeader from "./Navigation/MobileHeader";
 import ThemeToggler from "./ThemeToggle";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "../../ui/navigation-menu";
+import { Button } from "../../ui/button";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -33,15 +42,10 @@ const Header = () => {
     };
   }, [pathname]);
 
-  const handleSignOut = () => {
-    localStorage.removeItem("user");
-    signOut();
-    setUser(null);
-  };
-
   return (
     <>
       <header className={`fixed top-0 z-50 w-full`}>
+        {/* ------------------------- Web Navbar ------------------------- */}
         <div className="container p-3">
           <nav
             className={`flex items-center py-3 px-4 justify-between ${
@@ -53,55 +57,41 @@ const Header = () => {
             <div className="flex items-center">
               <Logo />
             </div>
-            <div className="hidden lg:flex bg-dark_black/5 dark:bg-white/5 rounded-3xl py-3 px-1">
-              <ul className="flex gap-0 2xl:gap-1.5">
-                {headerData.map((item, index) => (
-                  <HeaderLink key={index} item={item} />
-                ))}
-              </ul>
+            <div className="hidden lg:flex bg-dark_black/5 dark:bg-white/5 rounded-3xl py-2 px-1">
+              <NavigationMenu viewport={false}>
+                <NavigationMenuList>
+                  {headerData.map((item) =>
+                    item.children ? (
+                      <NavigationMenuItem key={item.label} className="">
+                        <NavigationMenuTrigger className="rounded-2xl bg-transparent font-medium  dark:hover:bg-gray-800 hover:bg-white  hover:shadow-header_shadow">
+                          {item.label}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <div className="w-[200px]">
+                            {item.children.map((child) => (
+                              <NavigationMenuLink key={child.label} asChild>
+                                <Link href={child.href}>{child.label}</Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
+                        </NavigationMenuContent>
+                      </NavigationMenuItem>
+                    ) : (
+                      <NavigationMenuLink key={item.label} asChild>
+                        <Button
+                          asChild
+                          variant={"ghost"}
+                          className="rounded-2xl hover:bg-white"
+                        >
+                          <Link href={item.href}>{item.label}</Link>
+                        </Button>
+                      </NavigationMenuLink>
+                    )
+                  )}
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
             <div className="flex items-center gap-1 xl:gap-4">
-              {/* ---------------------SignUp SignIn Button-----------------  */}
-              {/* {user?.user || session?.user ? (
-                <div className="hidden lg:flex gap-4">
-                  <button
-                    onClick={() => handleSignOut()}
-                    className="flex group font-normal items-center gap-1 transition-all duration-200 ease-in-out text-white px-4 py-2 bg-dark_black dark:bg-white/15 rounded-full hover:text-dark_black hover:bg-white dark:hover:bg-white/5 dark:hover:text-white border border-dark_black"
-                  >
-                    Sign Out
-                    <Icon icon="solar:logout-outline" width="25" height="25" />
-                  </button>
-                  <div className="relative group">
-                    <Image
-                      src="/images/home/avatar_1.jpg"
-                      alt="Image"
-                      width={40}
-                      height={40}
-                      quality={100}
-                      className="rounded-full cursor-pointer"
-                    />
-                    <p className="absolute w-fit text-sm text-center z-10 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-200 bg-white dark:bg-white/5 text-dark_black/60 p-1 min-w-28 rounded-lg shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3">
-                      {user?.user || session?.user?.name}
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Link
-                    href={"/signin"}
-                    className="hidden lg:block bg-transparent border border-dark_black dark:border-white/50 text-primary px-2.5 xl:px-4 py-2 rounded-full hover:bg-dark_black hover:text-white"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href={"/signup"}
-                    className="hidden lg:block text-white px-2.5 xl:px-4 py-2  bg-dark_black dark:bg-white/20 rounded-full hover:opacity-90"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
-              )} */}
-
               {/* ---------------------Light/Dark Mode button-------------------- */}
               <ThemeToggler />
 

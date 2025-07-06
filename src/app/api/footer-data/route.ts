@@ -43,7 +43,7 @@ const footerData = {
     links: [
       { name: "Pemprov Sulawesi Tenggara", url: "https://sultraprov.go.id" },
       { name: "SP4N Lapor", url: "https://lapor.go.id" },
-      { name: "SIGAP", url: "https://sigap.sultraprob.go.id" },
+      { name: "SIGAP", url: "https://sigap.sultraprov.go.id" },
       { name: "Documentation", url: "/documentation" },
     ],
   },
