@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC } from "react";
+import React from "react";
 import { getGaleriBySlug, getNotionPage } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import NextImage from "next/image";
@@ -11,10 +11,29 @@ import {
 } from "@tabler/icons-react";
 import NotionPage from "@/app/components/notion-renderer";
 
-const Page: FC<{ params: { slug: string } }> = async ({ params }) => {
-  const { slug } = await params;
+type Params = Promise<{ slug: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-  const post = await getGaleriBySlug(slug);
+export async function generateMetadata(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+  const slug = params.slug;
+  const query = searchParams.query;
+}
+
+export default async function Page(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+  const slug = params.slug;
+  const query = searchParams.query;
+
+  const post: any = await getGaleriBySlug(slug);
 
   if (!post) {
     notFound();
@@ -74,6 +93,4 @@ const Page: FC<{ params: { slug: string } }> = async ({ params }) => {
       </div>
     </article>
   );
-};
-
-export default Page;
+}

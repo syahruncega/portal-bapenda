@@ -2,7 +2,6 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -21,7 +20,6 @@ import {
 import { Button } from "../../ui/button";
 
 const Header = () => {
-  const { data: session } = useSession();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState<{ user: any } | null>(null);
   const [sticky, setSticky] = useState(false);
@@ -158,51 +156,6 @@ const Header = () => {
               {headerData.map((item, index) => (
                 <MobileHeader key={index} item={item} />
               ))}
-              <div className="flex flex-col items-center gap-3 px-2 mt-2">
-                {user || session?.user ? (
-                  <>
-                    <button
-                      onClick={() => signOut()}
-                      className="flex w-full group font-normal items-center gap-2 transition-all duration-200 ease-in-out text-white dark:text-dark_black px-4 py-2 bg-dark_black rounded-md hover:text-dark_black hover:bg-white border border-dark_black"
-                    >
-                      Sign Out
-                      <Icon
-                        icon="solar:logout-outline"
-                        width="25"
-                        height="25"
-                      />
-                    </button>
-                    <div className="group flex gap-2 items-center w-full border border-dark_black dark:border-white px-4 py-2 rounded-md hover:bg-dark_black transition-all duration-200 ease-in-out">
-                      <Image
-                        src="/images/home/avatar_1.jpg"
-                        alt="Image"
-                        width={25}
-                        height={25}
-                        quality={100}
-                        className="rounded-full cursor-pointer"
-                      />
-                      <p className="group-hover:text-white text-dark_black dark:text-white w-full capitalize">
-                        {user?.user?.email || session?.user?.name}
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href={"/signin"}
-                      className="w-full border border-dark_black dark:border-white text-primary px-4 py-2 rounded-md hover:bg-dark_black dark:hover:bg-white hover:text-white dark:hover:text-dark_black"
-                    >
-                      Sign In
-                    </Link>
-                    <Link
-                      href={"/signup"}
-                      className="w-full text-white dark:text-dark_black px-4 py-2 bg-dark_black dark:bg-white rounded-md hover:opacity-90"
-                    >
-                      Sign Up
-                    </Link>
-                  </>
-                )}
-              </div>
             </ul>
           </div>
         </div>
