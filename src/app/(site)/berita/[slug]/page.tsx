@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { getBeritaBySlug, getNotionPage } from "@/lib/notion";
+import { getBerita, getBeritaBySlug, getNotionPage } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import NextImage from "next/image";
 import { Button } from "@/app/components/ui/button";
@@ -11,43 +11,27 @@ import {
 } from "@tabler/icons-react";
 import NotionPage from "@/app/components/notion-renderer";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
+export const dynamicParams = true;
 
 type Params = Promise<{ slug: string }>;
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export async function generateMetadata(props: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
-  const slug = params.slug;
-  const query = searchParams.query;
+export async function generateStaticParams() {
+  const posts: any = await getBerita();
+  return posts.results.map((post: any) => ({
+    slug: post.properties.slug.rich_text[0].plain_text,
+  }));
 }
 
-export default async function Page(props: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
+export default async function Page(props: { params: Params }) {
   const params = await props.params;
-  const searchParams = await props.searchParams;
   const slug = params.slug;
-  const query = searchParams.query;
 
   const post: any = await getBeritaBySlug(slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) return notFound();
 
-  let recordMap;
-  try {
-    recordMap = await getNotionPage(post.id);
-  } catch (err) {
-    console.error("Failed to fetch Notion page:", err);
-    notFound();
-  }
+  const recordMap = await getNotionPage(post.id);
 
   const createdAt = new Date(post.properties.created?.created_time);
 
