@@ -160,7 +160,7 @@ const Header = () => {
                       {item.label}
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent>
+                  <DropdownMenuContent side="bottom" align="center">
                     {item.children.map((child, index) => (
                       <DropdownMenuItem key={child.label + index} asChild>
                         <Link href={child.href}>{child.label}</Link>
