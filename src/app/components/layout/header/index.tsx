@@ -2,12 +2,10 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import Image from "next/image";
+
 import { usePathname } from "next/navigation";
 import { headerData } from "./Navigation/Menudata";
 import Logo from "./Logo";
-import MobileHeader from "./Navigation/MobileHeader";
 import ThemeToggler from "./ThemeToggle";
 import {
   NavigationMenu,
@@ -18,10 +16,15 @@ import {
   NavigationMenuTrigger,
 } from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../../ui/dropdown-menu";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [user, setUser] = useState<{ user: any } | null>(null);
   const [sticky, setSticky] = useState(false);
   const pathname = usePathname();
 
@@ -31,10 +34,7 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -89,7 +89,7 @@ const Header = () => {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-            <div className="flex items-center gap-1 xl:gap-4">
+            <div className="flex items-center gap-6 xl:gap-4">
               {/* ---------------------Light/Dark Mode button-------------------- */}
               <ThemeToggler />
 
@@ -152,11 +152,33 @@ const Header = () => {
             </button>
           </div>
           <div className="p-4">
-            <ul className="flex flex-col">
-              {headerData.map((item, index) => (
-                <MobileHeader key={index} item={item} />
-              ))}
-            </ul>
+            {headerData.map((item, index) =>
+              item.children ? (
+                <DropdownMenu key={item.label + index}>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant={"ghost"} className="w-full justify-start">
+                      {item.label}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    {item.children.map((child, index) => (
+                      <DropdownMenuItem key={child.label + index} asChild>
+                        <Link href={child.href}>{child.label}</Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Button
+                  key={item.label + index}
+                  variant={"ghost"}
+                  className="w-full justify-start"
+                  asChild
+                >
+                  <Link href={item.href}>{item.label}</Link>
+                </Button>
+              )
+            )}
           </div>
         </div>
       </header>

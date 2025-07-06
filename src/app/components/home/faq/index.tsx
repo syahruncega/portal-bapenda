@@ -7,7 +7,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../ui/accordion";
+} from "../../ui/accordion-custom";
 
 function Faq() {
   const [faqList, setfaqList] = useState<any>(null);

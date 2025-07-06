@@ -37,9 +37,11 @@ const BeritaTerbaruContent: FC<{ data: any }> = ({ data }) => {
             })}
           </div>
           {pathname === "/" && (
-            <div className="flex justify-center">
-              <FancyButton label="Lihat lebih banyak" href="/berita" />
-            </div>
+            <motion.div {...bottomAnimation(data.length)}>
+              <div className="flex justify-center">
+                <FancyButton label="Lihat lebih banyak" href="/berita" />
+              </div>
+            </motion.div>
           )}
         </div>
       </div>

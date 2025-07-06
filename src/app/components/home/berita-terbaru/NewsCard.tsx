@@ -8,7 +8,7 @@ const NewsCard = ({ content }: { content: any }) => {
 
   return (
     <Link href={`/berita/${properties.slug.rich_text[0].text.content}`}>
-      <div className="group flex flex-col gap-4 xl:gap-10 border border-dark_black/10 p-6 2xl:p-10 rounded-2xl dark:bg-white/5 h-[510px]">
+      <div className="group flex flex-col gap-4 xl:gap-10 border border-dark_black/10 p-6 2xl:p-10 rounded-2xl dark:bg-white/5 h-[410px] md:h-[410px] lg:h-[510px]">
         <div className="relative w-full aspect-[3/2] overflow-hidden rounded-2xl shadow">
           <Image
             src={cover.file.url}

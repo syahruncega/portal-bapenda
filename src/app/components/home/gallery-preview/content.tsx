@@ -84,9 +84,11 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
             })}
           </div>
           {pathname === "/" && (
-            <div className="flex justify-center">
-              <FancyButton label="Lihat lebih banyak" href="/galeri" />
-            </div>
+            <motion.div {...bottomAnimation(data.length)}>
+              <div className="flex justify-center">
+                <FancyButton label="Lihat lebih banyak" href="/galeri" />
+              </div>
+            </motion.div>
           )}
         </div>
       </div>
