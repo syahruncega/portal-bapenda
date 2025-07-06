@@ -17,15 +17,17 @@ const Logo: React.FC<HeaderProps> = () => {
         priority={true}
         className="dark:hidden"
       />
-      {/* <Image
-        src="/images/logo/DarkModeLogo.svg"
+
+      <Image
+        src="/images/logo/bapenda-logo-dark.png"
         alt="logo"
         width={160}
-        height={50}
-        style={{ width: "auto", height: "auto" }}
+        height={34}
+        // style={{ width: "auto", height: "auto" }}
         quality={100}
+        priority={true}
         className="dark:block hidden"
-      /> */}
+      />
     </Link>
   );
 };
