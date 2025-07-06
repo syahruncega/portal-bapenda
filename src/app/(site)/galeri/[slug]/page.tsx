@@ -15,17 +15,17 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 type Params = Promise<{ slug: string }>;
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+// type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export async function generateMetadata(props: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
-  const slug = params.slug;
-  const query = searchParams.query;
-}
+// export async function generateMetadata(props: {
+//   params: Params;
+//   searchParams: SearchParams;
+// }) {
+//   const params = await props.params;
+//   const searchParams = await props.searchParams;
+//   const slug = params.slug;
+//   const query = searchParams.query;
+// }
 
 export async function generateStaticParams() {
   const posts: any = await getGaleri();
@@ -36,12 +36,12 @@ export async function generateStaticParams() {
 
 export default async function Page(props: {
   params: Params;
-  searchParams: SearchParams;
+  // searchParams: SearchParams;
 }) {
   const params = await props.params;
-  const searchParams = await props.searchParams;
+  // const searchParams = await props.searchParams;
   const slug = params.slug;
-  const query = searchParams.query;
+  // const query = searchParams.query;
 
   const post: any = await getGaleriBySlug(slug);
 
