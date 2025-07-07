@@ -1,6 +1,5 @@
 // import "server-only";
 import { Client, PageObjectResponse } from "@notionhq/client";
-import React from "react";
 
 import { NotionAPI } from "notion-client";
 
@@ -75,7 +74,7 @@ export const getGaleriBySlug = (slug: string) => {
     .then((res) => res.results[0] as PageObjectResponse | undefined);
 };
 
-export const getSinglePageBySlug = React.cache((slug: string) => {
+export const getSinglePageBySlug = (slug: string) => {
   return notion.databases
     .query({
       database_id: process.env.NOTION_ID_SINGLE_PAGE!,
@@ -87,7 +86,7 @@ export const getSinglePageBySlug = React.cache((slug: string) => {
       },
     })
     .then((res) => res.results[0] as PageObjectResponse | undefined);
-});
+};
 
 // export const getPageBlocks = React.cache((pageId: string) => {
 //   return notion.blocks.children

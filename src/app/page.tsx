@@ -1,28 +1,40 @@
 import { Metadata } from "next";
+import BeritaTerbaruContent from "./components/home/berita-terbaru/content";
+import { getBerita, getGaleri, getSlider } from "@/lib/notion";
+import GalleryPreviewContent from "./components/home/gallery-preview/content";
+import HeroContent from "./components/home/hero/content";
 import Faq from "./components/home/faq";
-import HeroSection from "./components/home/hero";
-import GalleryPreview from "./components/home/gallery-preview";
-import BeritaTerbaru from "./components/home/berita-terbaru";
-import SambutanSection from "./components/home/sambutan";
 
-// export const revalidate = 0;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Beranda | BAPENDA",
 };
 
-export default async function Home() {
+const Page = async () => {
+  const slider = await getSlider();
+  const berita = await getBerita();
+  const galeri = await getGaleri();
+
   return (
     <main>
-      <HeroSection />
+      <section id="Hero">
+        <HeroContent data={slider.results} />
+      </section>
 
-      <SambutanSection />
+      {/* <SambutanSection /> */}
 
-      <BeritaTerbaru />
+      <section id="Berita" className="mt-30">
+        <BeritaTerbaruContent data={berita.results} />
+      </section>
 
-      <GalleryPreview />
+      <section id="Geleri">
+        <GalleryPreviewContent data={galeri.results} />
+      </section>
 
       <Faq />
     </main>
   );
-}
+};
+
+export default Page;
