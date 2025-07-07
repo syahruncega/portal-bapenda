@@ -8,7 +8,7 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN!,
 });
 
-export const getBerita = React.cache(() => {
+export const getBerita = () => {
   return notion.databases.query({
     database_id: process.env.NOTION_ID_BERITA!,
     sorts: [{ direction: "descending", timestamp: "created_time" }],
@@ -19,9 +19,9 @@ export const getBerita = React.cache(() => {
       },
     },
   });
-});
+};
 
-export const getBeritaBySlug = React.cache((slug: string) => {
+export const getBeritaBySlug = (slug: string) => {
   return notion.databases
     .query({
       database_id: process.env.NOTION_ID_BERITA!,
@@ -33,9 +33,9 @@ export const getBeritaBySlug = React.cache((slug: string) => {
       },
     })
     .then((res) => res.results[0] as PageObjectResponse | undefined);
-});
+};
 
-export const getGaleri = React.cache(() => {
+export const getGaleri = () => {
   return notion.databases.query({
     database_id: process.env.NOTION_ID_GALERI!,
     sorts: [{ direction: "descending", timestamp: "created_time" }],
@@ -46,8 +46,9 @@ export const getGaleri = React.cache(() => {
       },
     },
   });
-});
-export const getSlider = React.cache(() => {
+};
+
+export const getSlider = () => {
   return notion.databases.query({
     database_id: process.env.NOTION_ID_SLIDER!,
     sorts: [{ direction: "ascending", timestamp: "created_time" }],
@@ -58,9 +59,9 @@ export const getSlider = React.cache(() => {
       },
     },
   });
-});
+};
 
-export const getGaleriBySlug = React.cache((slug: string) => {
+export const getGaleriBySlug = (slug: string) => {
   return notion.databases
     .query({
       database_id: process.env.NOTION_ID_GALERI!,
@@ -72,7 +73,7 @@ export const getGaleriBySlug = React.cache((slug: string) => {
       },
     })
     .then((res) => res.results[0] as PageObjectResponse | undefined);
-});
+};
 
 export const getSinglePageBySlug = React.cache((slug: string) => {
   return notion.databases
