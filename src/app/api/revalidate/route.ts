@@ -5,10 +5,10 @@ import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const url = searchParams.get("url");
+  const slug = searchParams.get("slug");
 
-  revalidatePath(`/berita/${url}`); // revalidate list page
-  // or revalidatePath(`/blog/${slug}`) for a specific page
+  revalidatePath(`/berita`);
+  revalidatePath(`/berita/${slug}`);
 
-  return NextResponse.json({ revalidated: true, slug: url });
+  return NextResponse.json({ revalidated: true, slug: slug });
 }
