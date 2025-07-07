@@ -15,12 +15,13 @@ const Page = async () => {
 
   return (
     <article className="mt-40">
-      <div className="max-w-3xl text-center mx-auto">
-        <h2 className="text">{post?.properties.title.title[0].plain_text}</h2>
+      <div className="max-w-3xl text-center mx-auto mt-20 md:mt-2">
+        <h2 className="text-2xl md:text-4xl">
+          {post?.properties.title.title[0].plain_text}
+        </h2>
       </div>
-
-      <div className="flex justify-center mt-14  mx-auto">
-        <div className="max-w-[300px] mr-10">
+      <div className="lg:flex lg:justify-center mt-6 lg:mt-14 mx-auto">
+        <div className="mx-auto max-w-[300px] mb-10 lg:mr-10 lg:ml-0">
           <Image
             src={post!.properties.avatar.files[0].file.url}
             alt={post!.properties.title.title[0].plain_text}
@@ -32,7 +33,7 @@ const Page = async () => {
             blurDataURL={post!.properties.avatar.files[0].file.url}
           />
         </div>
-        <div className="ml-10 text-justify">
+        <div className="ml-10 text-justify mx-4">
           <NotionPage recordMap={recordMap} />
         </div>
       </div>

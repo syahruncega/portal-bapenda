@@ -2,6 +2,8 @@ import GalleryPreviewContent from "@/app/components/home/gallery-preview/content
 import { getGaleri } from "@/lib/notion";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 const Page = async () => {
   const data = await getGaleri();
   return (

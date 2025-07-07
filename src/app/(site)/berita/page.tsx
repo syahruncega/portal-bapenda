@@ -2,6 +2,8 @@ import BeritaTerbaruContent from "@/app/components/home/berita-terbaru/content";
 import { getBerita } from "@/lib/notion";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 const Page = async () => {
   const data = await getBerita();
   return (
