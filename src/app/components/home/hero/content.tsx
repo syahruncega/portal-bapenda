@@ -39,15 +39,18 @@ const HeroContent: FC<{ data: any }> = ({ data }) => {
                 {data?.map((item: any) => (
                   <CarouselItem key={item.id}>
                     <Image
-                      src={item.properties.image.files[0].file.url}
+                      src={`/api/notion-image?url=${encodeURIComponent(
+                        item.properties.image.files[0].file.url
+                      )}`}
                       alt={item.properties.title.title[0].plain_text}
                       width={2000}
                       height={500}
                       quality={100}
                       className="rounded-2xl border-2 border-white"
-                      // placeholder="blur"
-                      // blurDataURL={item.properties.image.files[0].file.url}
-                      unoptimized={true}
+                      placeholder="blur"
+                      blurDataURL={`/api/notion-image?url=${encodeURIComponent(
+                        item.properties.image.files[0].file.url
+                      )}`}
                     />
                   </CarouselItem>
                 ))}

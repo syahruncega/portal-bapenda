@@ -40,7 +40,9 @@ export default async function Page(props: { params: Params }) {
       <div className="lg:grid lg:grid-cols-5 lg:gap-1 mb-10">
         <div className="flex justify-center lg:col-span-3">
           <NextImage
-            src={post.cover?.file.url}
+            src={`/api/notion-image?url=${encodeURIComponent(
+              post.cover?.file.url
+            )}`}
             alt="cover"
             width={500}
             height={400}
