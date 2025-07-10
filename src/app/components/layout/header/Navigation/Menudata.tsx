@@ -7,9 +7,28 @@ export const headerData: HeaderItem[] = [
     href: "",
     children: [
       { label: "Kata Sambutan", href: "/p/kata-sambutan" },
-      { label: "Visi Misi", href: "/p/visi-misi" },
-      { label: "Tugas Pokok dan Fungsi", href: "/p/tugas-pokok-dan-fungsi" },
       { label: "Struktur Organisasi", href: "/p/struktur-organisasi" },
+      {
+        label: "Tentang Bapenda",
+        href: "",
+        children: [
+          { label: "Biografi Bapenda", href: "/p/biografi-bapenda" },
+          {
+            label: "Tugas Pokok dan Fungsi",
+            href: "/p/tugas-pokok-dan-fungsi",
+          },
+          {
+            label: "Logo Bapenda",
+            href: "/p/logo-bapenda",
+          },
+          {
+            label: "Maskot Bapenda",
+            href: "/p/maskot-bapenda",
+          },
+        ],
+      },
+      { label: "Visi Misi", href: "/p/visi-misi" },
+
       { label: "Perencanaan", href: "/p/perencanaan" },
     ],
   },
@@ -18,6 +37,7 @@ export const headerData: HeaderItem[] = [
     href: "",
     children: [
       { label: "Berita", href: "/berita" },
+      { label: "Berita Video", href: "/berita-video" },
       { label: "Inforgrafis", href: "/infografis" },
       { label: "Galeri", href: "/galeri" },
     ],
@@ -38,9 +58,9 @@ export const headerData: HeaderItem[] = [
     children: [
       { label: "Pajak Daerah", href: "/p/pajak-daerah" },
       { label: "Retribusi Daerah", href: "/p/retribusi-daerah" },
-      { label: "Peratuan", href: "/p/peraturan" },
+      { label: "Peraturan", href: "/p/peraturan" },
       {
-        label: "Keputusan Kepala BAPENDA",
+        label: "Keputusan Kepala Bapenda",
         href: "/p/keputusan-kepala-bapenda",
       },
       { label: "Laporan", href: "/p/laporan" },

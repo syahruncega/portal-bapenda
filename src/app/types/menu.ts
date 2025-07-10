@@ -1,7 +1,11 @@
 export type HeaderItem = {
   label: string;
   href: string;
-  children?: Array<{ label: string; href: string }>;
+  children?: Array<{
+    label: string;
+    href: string;
+    children?: Array<{ label: string; href: string }>;
+  }>;
 };
 
 export type avatar = {

@@ -8,17 +8,17 @@ const Logo: React.FC<HeaderProps> = () => {
       {/* <div className="dark:hidden text-2xl font-bold">BAPENDA</div>
       <div className="dark:block hidden text-2xl font-bold">BAPENDA</div> */}
       <Image
-        src="/images/logo/bapenda-logo.png"
+        src="/images/logo/brand.png"
         alt="logo"
-        width={160}
+        width={100}
         height={34}
         // style={{ width: "auto", height: "auto" }}
         quality={100}
         priority={true}
-        className="dark:hidden"
+        // className="dark:hidden"
       />
 
-      <Image
+      {/* <Image
         src="/images/logo/bapenda-logo-dark.png"
         alt="logo"
         width={160}
@@ -27,7 +27,7 @@ const Logo: React.FC<HeaderProps> = () => {
         quality={100}
         priority={true}
         className="dark:block hidden"
-      />
+      /> */}
     </Link>
   );
 };
