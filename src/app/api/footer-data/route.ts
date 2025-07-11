@@ -42,11 +42,12 @@ const footerData = {
     name: "Halaman lain",
     links: [
       { name: "Pemprov Sulawesi Tenggara", url: "https://sultraprov.go.id" },
+      { name: "Kebijakan Privasi", url: "/p/kebijakan-privasi" },
+      //  {
+      //   name: "Mobile BAPENDA",
+      //   url: "https://play.google.com/store/search?q=bapenda+mobile+sultra&c=apps&hl=id",
+      // },
       { name: "SIGAP", url: "https://sigap.sultraprov.go.id" },
-      {
-        name: "Mobile BAPENDA",
-        url: "https://play.google.com/store/search?q=bapenda+mobile+sultra&c=apps&hl=id",
-      },
       { name: "SP4N Lapor", url: "https://lapor.go.id" },
     ],
   },

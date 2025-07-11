@@ -79,5 +79,6 @@ export const headerData: HeaderItem[] = [
     ],
   },
   { label: "Cek Pajak Ranmor", href: "/p/cek-pajak-ranmor" },
-  { label: "Privasi", href: "/p/kebijakan-privasi" },
+  { label: "Pengaduan", href: "/p/pengaduan" },
+  // { label: "Kebijakan Privasi", href: "/p/kebijakan-privasi" },
 ];

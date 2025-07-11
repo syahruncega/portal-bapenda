@@ -1,4 +1,5 @@
-import BeritaTerbaruContent from "@/app/components/home/berita-terbaru/content";
+
+import BeritaTerbaru from "@/app/components/home/berita-terbaru";
 import { getBerita } from "@/lib/notion";
 import React from "react";
 
@@ -8,7 +9,7 @@ const Page = async () => {
   const data = await getBerita();
   return (
     <div className="mt-20">
-      <BeritaTerbaruContent data={data.results} />;
+      <BeritaTerbaru data={data.results} />;
     </div>
   );
 };

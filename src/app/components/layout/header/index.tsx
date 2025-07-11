@@ -7,23 +7,11 @@ import { usePathname } from "next/navigation";
 import { headerData } from "./Navigation/Menudata";
 import Logo from "./Logo";
 import ThemeToggler from "./ThemeToggle";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
 import { ChevronDownIcon, ChevronRight, ChevronUpIcon } from "lucide-react";

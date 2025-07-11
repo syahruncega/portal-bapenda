@@ -126,7 +126,7 @@ function ContactForm() {
               >
                 <div className="flex flex-col md:flex md:flex-row gap-6">
                   <div className="w-full">
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name">Nama Lengkap</label>
                     <input
                       className="w-full mt-2 rounded-full border px-5 py-3 outline-hidden transition dark:border-white/20
                                                 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40"
@@ -135,11 +135,11 @@ function ContactForm() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Enter your name"
+                      placeholder="Nama lengkap"
                     />
                   </div>
                   <div className="w-full">
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       className="w-full mt-2 rounded-full border px-5 py-3 outline-hidden transition dark:border-white/20
                                                 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40"
@@ -148,11 +148,11 @@ function ContactForm() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Enter your email"
+                      placeholder="Email"
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:flex md:flex-row gap-6">
+                {/* <div className="flex flex-col md:flex md:flex-row gap-6">
                   <div className="w-full">
                     <label htmlFor="interest">
                       What are you interested in?
@@ -185,9 +185,9 @@ function ContactForm() {
                       <option value="$50500">$50,500</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
                 <div className="w-full">
-                  <label htmlFor="message">Message</label>
+                  <label htmlFor="message">Pesan</label>
                   <textarea
                     className="w-full mt-2 rounded-3xl border px-5 py-3 outline-hidden transition dark:border-white/20
                                         focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40"
@@ -195,7 +195,7 @@ function ContactForm() {
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Let tell us know your project about"
+                    placeholder=""
                     rows={4}
                   />
                 </div>
@@ -206,7 +206,7 @@ function ContactForm() {
                       className="group w-fit text-white dark:text-dark_black font-medium bg-dark_black dark:bg-white rounded-full flex items-center gap-4 py-2 pl-5 pr-2 transition-all duration-200 ease-in-out  hover:bg-transparent border hover:text-dark_black border-dark_black"
                     >
                       <span className="transform transition-transform duration-200 ease-in-out group-hover:translate-x-10">
-                        Let’s Collaborate
+                        Kirim
                       </span>
                       <svg
                         width="32"
@@ -214,7 +214,7 @@ function ContactForm() {
                         viewBox="0 0 32 32"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="transform transition-transform duration-200 ease-in-out group-hover:-translate-x-36 group-hover:rotate-45"
+                        className="transform transition-transform duration-200 ease-in-out group-hover:-translate-x-16 group-hover:rotate-45"
                       >
                         <rect
                           width="32"
