@@ -43,8 +43,8 @@ const HeroContent: FC<{ data: any }> = ({ data }) => {
                         item.properties.image.files[0].file.url
                       )}`}
                       alt={item.properties.title.title[0].plain_text}
-                      width={2000}
-                      height={500}
+                      width={2564}
+                      height={1136}
                       quality={100}
                       className="rounded-2xl border-2 border-white"
                       placeholder="blur"

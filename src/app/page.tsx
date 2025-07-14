@@ -5,6 +5,7 @@ import HeroContent from "./components/home/hero/content";
 import Faq from "./components/home/faq";
 // import SambutanSection from "./components/home/sambutan";
 import BeritaTerbaru from "./components/home/berita-terbaru";
+import SambutanContent from "./components/home/sambutan/content";
 
 export const revalidate = 0;
 
@@ -23,7 +24,9 @@ const Page = async () => {
         <HeroContent data={slider.results} />
       </section>
 
-      {/* <SambutanSection /> */}
+      <section id="Sambutan">
+        <SambutanContent />
+      </section>
 
       <section id="Berita" className="mt-30">
         <BeritaTerbaru data={berita.results} />
