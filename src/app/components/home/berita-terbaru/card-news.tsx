@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import React from "react";
 import { Badge } from "../../ui/badge";
@@ -13,7 +14,7 @@ const CardNews = ({ content }: { content: any }) => {
   return (
     <div className="relative aspect-[1/1.12] overflow-hidden rounded-2xl shadow flex flex-col justify-end">
       <Image
-        src={cover.file.url}
+        src={`/api/notion-image?url=${encodeURIComponent(cover.file.url)}`}
         alt={`img`}
         fill
         className="object-cover"
@@ -29,7 +30,6 @@ const CardNews = ({ content }: { content: any }) => {
         <div className="flex h-5 items-center space-x-4 text-xs">
           <CalendarIcon size={14} className="mr-3" />
           <div className="mr-3">
-            {" "}
             {createdAt.toLocaleDateString("id-ID", {
               day: "2-digit",
               month: "long",

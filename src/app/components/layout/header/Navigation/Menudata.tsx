@@ -49,7 +49,6 @@ export const headerData: HeaderItem[] = [
       { label: "Maklumat Pelayanan", href: "/p/maklumat-pelayanan" },
       { label: "Standar Pelayanan", href: "/p/standar-pelayanan" },
       { label: "Pengumuman", href: "/p/pengumuman" },
-      { label: "pengaduan", href: "/p/pengaduan" },
     ],
   },
   {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { CalendarIcon } from "lucide-react";
 import React, { FC, useRef } from "react";
@@ -15,6 +16,7 @@ import { ScrollArea } from "../../ui/scroll-area";
 import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import CardNews from "./card-news";
+import Autoplay from "embla-carousel-autoplay";
 
 const BeritaTerbaru: FC<{ data: any }> = ({ data }) => {
   const pathname = usePathname();
@@ -39,9 +41,17 @@ const BeritaTerbaru: FC<{ data: any }> = ({ data }) => {
       <motion.div {...bottomAnimation(1)}>
         <div className="flex flex-col items-center lg:flex-row justify-center ">
           <div className="max-w-[540px] max-h-[600px] rounded-3xl overflow-hidden">
-            <Carousel className="">
+            <Carousel
+              className=""
+              opts={{ loop: true }}
+              plugins={[
+                Autoplay({
+                  delay: 5000,
+                }),
+              ]}
+            >
               <CarouselContent>
-                {data.map((item, index) => (
+                {data.map((item: any) => (
                   <CarouselItem key={item.id}>
                     <CardNews content={item} />
                   </CarouselItem>
@@ -57,7 +67,7 @@ const BeritaTerbaru: FC<{ data: any }> = ({ data }) => {
                 pathname === "/berita" ? "h-[560px]" : "h-[500px]"
               } px-5`}
             >
-              {data.map((item, index) => {
+              {data.map((item: any) => {
                 const createdAt = new Date(
                   item.properties.created.created_time
                 );

@@ -31,14 +31,18 @@ const SambutanContent: FC<{ post: any; recordMap: any }> = ({
         <div className="lg:flex lg:justify-center mt-6 lg:mt-14 mx-auto">
           <div className="mx-auto max-w-[300px] mb-10 lg:mr-10 lg:ml-0">
             <Image
-              src={post!.properties.avatar.files[0].file.url}
+              src={`/api/notion-image?url=${encodeURIComponent(
+                post!.properties.avatar.files[0].file.url
+              )}`}
               alt={post!.properties.title.title[0].plain_text}
               width={625}
               height={410}
               className="rounded-2xl"
               unoptimized={true}
               placeholder="blur"
-              blurDataURL={post!.properties.avatar.files[0].file.url}
+              blurDataURL={`/api/notion-image?url=${encodeURIComponent(
+                post!.properties.avatar.files[0].file.url
+              )}`}
             />
           </div>
           <div className="ml-10 text-justify mx-4">

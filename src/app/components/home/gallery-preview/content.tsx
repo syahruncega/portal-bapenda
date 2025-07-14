@@ -39,12 +39,13 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
                   >
                     <div className="relative ">
                       <Image
-                        src={items.cover.file.url}
+                        src={`/api/notion-image?url=${encodeURIComponent(
+                          items.cover.file.url
+                        )}`}
                         alt={items.properties.title.title[0].plain_text}
                         width={625}
                         height={410}
                         className="rounded-2xl"
-                        unoptimized={true}
                       />
 
                       {/* Overlay div */}

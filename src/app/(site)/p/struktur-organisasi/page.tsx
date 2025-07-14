@@ -11,8 +11,6 @@ const Page = async () => {
     notFound();
   }
 
-  console.log(post);
-
   return (
     <article className="mt-40">
       <div className="max-w-3xl text-center mx-auto">
