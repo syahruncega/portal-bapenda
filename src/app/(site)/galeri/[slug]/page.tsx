@@ -11,8 +11,8 @@ import {
 } from "@tabler/icons-react";
 import NotionPage from "@/app/components/notion-renderer";
 
-export const revalidate = 60;
 export const dynamicParams = true;
+export const revalidate = 60 * 30;
 
 type Params = Promise<{ slug: string }>;
 // type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
