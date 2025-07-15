@@ -38,6 +38,8 @@ const Page = async () => {
 
       <Faq />
     </main>
+
+    // Just for redeploy
   );
 };
 
