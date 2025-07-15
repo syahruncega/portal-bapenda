@@ -12,7 +12,7 @@ import {
 import NotionPage from "@/app/components/notion-renderer";
 
 export const dynamicParams = true;
-export const revalidate = 60 * 30;
+export const revalidate = 1200;
 
 type Params = Promise<{ slug: string }>;
 // type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
