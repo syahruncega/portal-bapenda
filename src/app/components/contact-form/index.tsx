@@ -6,11 +6,9 @@ import { useState } from "react";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
+    nama: "",
     email: "",
-    interest: "design & branding",
-    budget: "",
-    message: "",
+    aduan: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -23,33 +21,33 @@ function ContactForm() {
   };
 
   const reset = () => {
-    formData.name = "";
+    formData.nama = "";
     formData.email = "";
-    formData.interest = "design & branding";
-    formData.budget = "";
-    formData.message = "";
+    formData.aduan = "";
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoader(true);
 
-    fetch("https://formsubmit.co/ajax/bhainirav772@gmail.com", {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/aduans`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        interest: formData.interest,
-        budget: formData.budget,
-        message: formData.message,
+        data: {
+          nama: formData.nama,
+          email: formData.email,
+          aduan: formData.aduan,
+        },
+        // is_show: false,
+        // status_aduan: "Menunggu Jawaban",
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
 
-        setSubmitted(data.success);
+        setSubmitted(true);
         reset();
       })
       .catch((error) => {
@@ -81,8 +79,8 @@ function ContactForm() {
                     style={{ color: "#79D45E" }}
                   />
                   <h5 className="text-green dark:text-green">
-                    Great!!! Email has been Successfully Sent. We will get in
-                    touch asap.
+                    Terimakasih, pesan anda berhasil dikirim. Kami akan segera
+                    membalas.
                   </h5>
                 </div>
 
@@ -126,14 +124,14 @@ function ContactForm() {
               >
                 <div className="flex flex-col md:flex md:flex-row gap-6">
                   <div className="w-full">
-                    <label htmlFor="name">Nama Lengkap</label>
+                    <label htmlFor="nama">Nama Lengkap</label>
                     <input
                       className="w-full mt-2 rounded-full border px-5 py-3 outline-hidden transition dark:border-white/20
                                                 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40"
-                      id="name"
+                      id="nama"
                       type="text"
-                      name="name"
-                      value={formData.name}
+                      name="nama"
+                      value={formData.nama}
                       onChange={handleChange}
                       placeholder="Nama lengkap"
                     />
@@ -187,13 +185,13 @@ function ContactForm() {
                   </div>
                 </div> */}
                 <div className="w-full">
-                  <label htmlFor="message">Pesan</label>
+                  <label htmlFor="aduan">Pesan</label>
                   <textarea
                     className="w-full mt-2 rounded-3xl border px-5 py-3 outline-hidden transition dark:border-white/20
                                         focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40"
-                    name="message"
-                    id="message"
-                    value={formData.message}
+                    name="aduan"
+                    id="aduan"
+                    value={formData.aduan}
                     onChange={handleChange}
                     placeholder=""
                     rows={4}

@@ -48,23 +48,38 @@ export const headerData: HeaderItem[] = [
     children: [
       { label: "Maklumat Pelayanan", href: "/p/maklumat-pelayanan" },
       { label: "Standar Pelayanan", href: "/p/standar-pelayanan" },
-      { label: "Pengumuman", href: "/p/pengumuman" },
+      { label: "Info Pajak Kendaraan", href: "/p/info-pajak-kendaraan" },
     ],
   },
+  // {
+  //   label: "Informasi PAD",
+  //   href: "",
+  //   children: [
+  //     { label: "Pajak Daerah", href: "/p/pajak-daerah" },
+  //     { label: "Retribusi Daerah", href: "/p/retribusi-daerah" },
+  //     { label: "Peraturan", href: "/p/peraturan" },
+  //     {
+  //       label: "Keputusan Kepala Bapenda",
+  //       href: "/p/keputusan-kepala-bapenda",
+  //     },
+  //     { label: "Laporan", href: "/p/laporan" },
+  //     { label: "Tim Pembina Samsat", href: "/p/tim-pembina-samsat" },
+  //   ],
+  // },
+  // {
+  //   label: "Data",
+  //   href: "",
+  //   children: [
+  //     { label: "Peraturan", href: "/p/peraturan" },
+  //     { label: "Indeks Kepuasan Masyarakat (IKM)", href: "/p/ikm" },
+  //     { label: "Indeks Kepuasan Masyarakat (IKM)", href: "/p/ikm" },
+  //   ],
+  // },
+
   {
-    label: "Informasi PAD",
+    label: "PPID",
     href: "",
-    children: [
-      { label: "Pajak Daerah", href: "/p/pajak-daerah" },
-      { label: "Retribusi Daerah", href: "/p/retribusi-daerah" },
-      { label: "Peraturan", href: "/p/peraturan" },
-      {
-        label: "Keputusan Kepala Bapenda",
-        href: "/p/keputusan-kepala-bapenda",
-      },
-      { label: "Laporan", href: "/p/laporan" },
-      { label: "Tim Pembina Samsat", href: "/p/tim-pembina-samsat" },
-    ],
+    children: [{ label: "Daftar Informasi", href: "/p/daftar-informasi" }],
   },
   {
     label: "Samsat",
@@ -77,7 +92,7 @@ export const headerData: HeaderItem[] = [
       { label: "Gerai Samsat", href: "/p/gerai-samsat" },
     ],
   },
-  { label: "Cek Pajak Ranmor", href: "/p/cek-pajak-ranmor" },
+  // { label: "Cek Pajak Ranmor", href: "/p/cek-pajak-ranmor" },
   { label: "Pengaduan", href: "/p/pengaduan" },
   // { label: "Kebijakan Privasi", href: "/p/kebijakan-privasi" },
 ];

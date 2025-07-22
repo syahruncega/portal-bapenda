@@ -1,8 +1,11 @@
 import GalleryPreviewContent from "@/app/components/home/gallery-preview/content";
 import { getGaleri } from "@/lib/notion";
+import { Metadata } from "next";
 import React from "react";
 
-export const revalidate = 0;
+export const metadata: Metadata = {
+  title: "Galeri | BAPENDA",
+};
 
 const Page = async () => {
   const data = await getGaleri();

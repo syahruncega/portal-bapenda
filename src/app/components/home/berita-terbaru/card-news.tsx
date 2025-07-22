@@ -8,14 +8,12 @@ import { Button } from "../../ui/button";
 import Link from "next/link";
 
 const CardNews = ({ content }: { content: any }) => {
-  const { cover, properties } = content;
-
-  const createdAt = new Date(properties.created.created_time);
+  const createdAt = new Date(content.createdAt);
   return (
     <div className="relative aspect-[1/1.12] overflow-hidden rounded-2xl shadow flex flex-col justify-end">
       <Image
-        src={`/api/notion-image?url=${encodeURIComponent(cover.file.url)}`}
-        alt={`img`}
+        src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${content.cover.formats.large.url}`}
+        alt={content.title}
         fill
         className="object-cover"
         sizes="(max-width: 540px) 100vw, 50vw"
@@ -25,7 +23,7 @@ const CardNews = ({ content }: { content: any }) => {
           <Badge>Samsat</Badge>
         </div>
         <div className="text-2xl font-semibold line-clamp-3 mb-2">
-          {properties.title.title[0].text.content}
+          {content.title}
         </div>
         <div className="flex h-5 items-center space-x-4 text-xs">
           <CalendarIcon size={14} className="mr-3" />
@@ -46,9 +44,7 @@ const CardNews = ({ content }: { content: any }) => {
           size={"sm"}
           asChild
         >
-          <Link href={`/berita/${properties.slug.rich_text[0].text.content}`}>
-            Baca Selengkapnya
-          </Link>
+          <Link href={`/berita/${content.slug}`}>Baca Selengkapnya</Link>
         </Button>
       </div>
     </div>

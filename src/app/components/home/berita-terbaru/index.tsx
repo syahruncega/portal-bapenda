@@ -68,19 +68,17 @@ const BeritaTerbaru: FC<{ data: any }> = ({ data }) => {
               } px-5`}
             >
               {data.map((item: any) => {
-                const createdAt = new Date(
-                  item.properties.created.created_time
-                );
+                const createdAt = new Date(item.publishedAt);
                 return (
                   <Link
-                    href={`/berita/${item.properties.slug.rich_text[0].text.content}`}
+                    href={`/berita/${item.slug}`}
                     key={item.id}
                     className="mb-2"
                   >
                     <div className="p-2 hover:bg-blue-100 rounded-xl">
                       <Badge className="mb-2">Samsat</Badge>
                       <div className="text-md font-medium mb-2">
-                        {item.properties.title.title[0].text.content}
+                        {item.title}
                       </div>
                       <div className="flex h-5 items-center space-x-4 text-xs">
                         <CalendarIcon size={14} className="mr-3" />

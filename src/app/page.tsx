@@ -1,27 +1,24 @@
 import { Metadata } from "next";
-import { getBerita, getGaleri, getSlider } from "@/lib/notion";
 import GalleryPreviewContent from "./components/home/gallery-preview/content";
 import HeroContent from "./components/home/hero/content";
 import Faq from "./components/home/faq";
-// import SambutanSection from "./components/home/sambutan";
 import BeritaTerbaru from "./components/home/berita-terbaru";
-import SambutanContent from "./components/home/sambutan/content";
-
-export const revalidate = 0;
+import { getBeritas, getGaleris, getSliders } from "@/lib/strapi";
+import SambutanContent from "./components/home/sambutan";
 
 export const metadata: Metadata = {
   title: "Beranda | BAPENDA",
 };
 
 const Page = async () => {
-  const slider = await getSlider();
-  const berita = await getBerita();
-  const galeri = await getGaleri();
+  const sliders = await getSliders();
+  const berita = await getBeritas();
+  const galeri = await getGaleris();
 
   return (
     <main>
       <section id="Hero">
-        <HeroContent data={slider.results} />
+        <HeroContent data={sliders.data} />
       </section>
 
       <section id="Sambutan">
@@ -29,11 +26,11 @@ const Page = async () => {
       </section>
 
       <section id="Berita" className="mt-30">
-        <BeritaTerbaru data={berita.results} />
+        <BeritaTerbaru data={berita.data} />
       </section>
 
       <section id="Geleri">
-        <GalleryPreviewContent data={galeri.results} />
+        <GalleryPreviewContent data={galeri.data} />
       </section>
 
       <Faq />

@@ -39,10 +39,8 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
                   >
                     <div className="relative ">
                       <Image
-                        src={`/api/notion-image?url=${encodeURIComponent(
-                          items.cover.file.url
-                        )}`}
-                        alt={items.properties.title.title[0].plain_text}
+                        src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${items.cover.url}`}
+                        alt={items.title}
                         width={625}
                         height={410}
                         className="rounded-2xl"
@@ -50,7 +48,7 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
 
                       {/* Overlay div */}
                       <Link
-                        href={`/galeri/${items.properties.slug.rich_text[0].plain_text}`}
+                        href={`/galeri/${items.slug}`}
                         className="absolute top-0 left-0 bg-black/50 w-full h-full rounded-2xl hidden group-hover:flex"
                       >
                         <span className="flex justify-end p-5 w-full">
@@ -66,10 +64,10 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
 
                     <div className="flex flex-col items-start gap-4">
                       <h5 className="group-hover:text-purple_blue">
-                        {items.properties.title.title[0].plain_text}
+                        {items.title}
                       </h5>
                       <div className="flex gap-3">
-                        {items.properties.tags.multi_select?.map((tag: any) => (
+                        {items.category?.map((tag: any) => (
                           <p
                             key={tag.id}
                             className="text-sm border border-dark_black/10 dark:border-white/50 w-fit py-1.5 px-4 rounded-full hover:bg-dark_black hover:text-white"
@@ -85,7 +83,7 @@ const GalleryPreviewContent: FC<{ data: any }> = ({ data }) => {
             })}
           </div>
           {pathname === "/" && (
-            <motion.div {...bottomAnimation(data.length)}>
+            <motion.div {...bottomAnimation(data?.length)}>
               <div className="flex justify-center">
                 <FancyButton label="Lihat lebih banyak" href="/galeri" />
               </div>

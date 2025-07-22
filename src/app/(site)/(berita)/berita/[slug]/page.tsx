@@ -1,25 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { getBerita, getBeritaBySlug, getNotionPage } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import NextImage from "next/image";
 import { Button } from "@/app/components/ui/button";
-import {
-  IconBrandInstagram,
-  IconBrandWhatsapp,
-  IconLink,
-} from "@tabler/icons-react";
-import NotionPage from "@/app/components/notion-renderer";
+import { IconBrandWhatsapp, IconLink } from "@tabler/icons-react";
+import { getBeritaBySlug, getBeritas } from "@/lib/strapi";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export const dynamicParams = true;
 export const revalidate = 1200;
 
 type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams() {
-  const posts: any = await getBerita();
-  return posts.results.map((post: any) => ({
-    slug: post.properties.slug.rich_text[0].plain_text,
+  const berita: any = await getBeritas();
+  return berita.data.map((item: any) => ({
+    slug: item.slug,
   }));
 }
 
@@ -31,19 +26,14 @@ export default async function Page(props: { params: Params }) {
 
   if (!post) return notFound();
 
-  const recordMap = await getNotionPage(post.id);
-
-  const createdAt = new Date(post.properties.created?.created_time);
+  const createdAt = new Date(post.data[0].createdAt);
 
   return (
     <article className="mt-40 mx-10 md:mx-18 lg:mx-30">
       <div className="lg:grid lg:grid-cols-5 lg:gap-1 mb-10">
         <div className="flex justify-center lg:col-span-3">
           <NextImage
-            // src={`/api/notion-image?url=${encodeURIComponent(
-            //   post.cover?.file.url
-            // )}`}
-            src={post.cover?.file.url}
+            src={`${process.env.STRAPI_BASE_URL}${post.data[0].cover.url}`}
             alt="cover"
             width={500}
             height={400}
@@ -52,7 +42,7 @@ export default async function Page(props: { params: Params }) {
         <div className="font-[Mona_Sans] flex items-center justify-center lg:col-span-2">
           <div>
             <p className="text-lg md:text-2xl lg:text-4xl mt-10 lg:mt-0 font-bold leading-6 md:leading-8 lg:leading-10 justify-center">
-              {post.properties.title?.title[0].plain_text}
+              {post.data[0].title}
             </p>
             <p className="mt-6 font-semibold">by Admin</p>
             <p className="font-medium text-gray-500">
@@ -63,9 +53,9 @@ export default async function Page(props: { params: Params }) {
               })}
             </p>
             <div className="mt-4">
-              <Button variant="outline" size="sm" className="rounded-full mr-2">
+              {/* <Button variant="outline" size="sm" className="rounded-full mr-2">
                 <IconBrandInstagram /> Share
-              </Button>
+              </Button> */}
               <Button variant="outline" size="sm" className="rounded-full mr-2">
                 <IconBrandWhatsapp /> Share
               </Button>
@@ -77,8 +67,12 @@ export default async function Page(props: { params: Params }) {
         </div>
       </div>
 
-      <div className="text-justify  -mx-6">
-        <NotionPage recordMap={recordMap} />
+      <div className="flex justify-center">
+        <div className="text-justify -mx-6 prose lg:prose-xl">
+          {post.data[0].blocks.map((block: any) => (
+            <BlocksRenderer key={block.id} content={block.body} />
+          ))}
+        </div>
       </div>
     </article>
   );
