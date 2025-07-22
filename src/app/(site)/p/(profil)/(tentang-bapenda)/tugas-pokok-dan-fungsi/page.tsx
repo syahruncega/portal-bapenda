@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import TugasPokokDanFungsi from "./tugas-pokok-dan-fungsi.md";
+import TugasPokokDanFungsi from "./tugas-pokok-dan-fungsi.mdx";
 
 export const metadata: Metadata = {
   title: "Tugas Pokok dan Fungsi | BAPENDA",

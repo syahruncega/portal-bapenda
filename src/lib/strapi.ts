@@ -53,3 +53,17 @@ export async function getGaleris() {
   const data = await res.json();
   return data;
 }
+
+export async function getGaleriBySlug(slug: string) {
+  const res = await fetch(
+    `${process.env.STRAPI_BASE_URL}/api/galeris?filters[slug][$eq]=${slug}&populate=*`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch");
+
+  const data = await res.json();
+  return data;
+}

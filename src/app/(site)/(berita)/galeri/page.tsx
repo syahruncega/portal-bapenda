@@ -1,5 +1,5 @@
-import GalleryPreviewContent from "@/app/components/home/gallery-preview/content";
-import { getGaleri } from "@/lib/notion";
+import GalleryPreview from "@/app/components/home/gallery-preview";
+import { getGaleris } from "@/lib/strapi";
 import { Metadata } from "next";
 import React from "react";
 
@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const data = await getGaleri();
+  const galeri = await getGaleris();
   return (
     <div className="mt-20">
-      <GalleryPreviewContent data={data.results} />
+      <GalleryPreview data={galeri.data} />
     </div>
   );
 };
