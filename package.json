@@ -1,11 +1,11 @@
 {
-  "name": "portal-bapend-notion",
+  "name": "frontend-portal-bapenda",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3721 ",
+    "dev": "next dev -p 3001 ",
     "build": "next build",
-    "start": "next start -p 4721",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
