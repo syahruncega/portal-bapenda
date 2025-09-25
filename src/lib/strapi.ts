@@ -3,6 +3,9 @@ export async function getBeritas() {
     `${process.env.STRAPI_BASE_URL}/api/beritas?sort[0]=createdAt:desc&populate=cover`,
     {
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
     }
   );
 
@@ -17,6 +20,9 @@ export async function getBeritaBySlug(slug: string) {
     `${process.env.STRAPI_BASE_URL}/api/beritas?filters[slug][$eq]=${slug}&populate=*`,
     {
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
     }
   );
 
@@ -31,6 +37,9 @@ export async function getSliders() {
     `${process.env.STRAPI_BASE_URL}/api/sliders?populate=*`,
     {
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
     }
   );
 
@@ -45,6 +54,9 @@ export async function getGaleris() {
     `${process.env.STRAPI_BASE_URL}/api/galeris?sort[0]=createdAt:desc&populate=cover`,
     {
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
     }
   );
 
@@ -59,6 +71,26 @@ export async function getGaleriBySlug(slug: string) {
     `${process.env.STRAPI_BASE_URL}/api/galeris?filters[slug][$eq]=${slug}&populate=*`,
     {
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
+    }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch");
+
+  const data = await res.json();
+  return data;
+}
+
+export async function getStrukturOrganisasi() {
+  const res = await fetch(
+    `${process.env.STRAPI_BASE_URL}/api/struktur-organisasi?populate=*`,
+    {
+      cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
     }
   );
 
