@@ -39,7 +39,7 @@ const GalleryPreview: FC<{ data: any }> = ({ data }) => {
                   >
                     <div className="relative ">
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${items.cover.url}`}
+                        src={`${items.cover.url}`}
                         alt={items.title}
                         width={625}
                         height={410}

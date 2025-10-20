@@ -23,7 +23,7 @@ const Page = async () => {
 
       <div className="mt-14 flex justify-center mx-20">
         <NextImage
-          src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${strukturOrganisasi.data.image.url}`}
+          src={`${strukturOrganisasi.data.image.url}`}
           alt={strukturOrganisasi.data.title}
           width={3236}
           height={1564}

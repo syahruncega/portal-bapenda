@@ -12,7 +12,7 @@ const CardNews = ({ content }: { content: any }) => {
   return (
     <div className="relative aspect-[1/1.12] overflow-hidden rounded-2xl shadow flex flex-col justify-end">
       <Image
-        src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${content.cover.formats.large.url}`}
+        src={`${content.cover.formats.large.url}`}
         alt={content.title}
         fill
         className="object-cover"

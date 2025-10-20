@@ -20,7 +20,7 @@ const items = [
     contents: [
       {
         label: "Renstra 2024-2026",
-        href: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/uploads/RENSTRA_BAPENDA_2024_2026_cf4d2b600c.pdf`,
+        href: `${process.env.MINIO_BASE_URL}/RENSTRA_BAPENDA_2024_2026_f053d1eac0.pdf`,
       },
     ],
   },
@@ -30,7 +30,7 @@ const items = [
     contents: [
       {
         label: "Renja 2025",
-        href: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/uploads/RENJA_2025_BAPENDA_d60e3e5f04.pdf`,
+        href: `${process.env.MINIO_BASE_URL}/RENJA_2025_BAPENDA_fc2312bdd6.pdf`,
       },
     ],
   },
@@ -40,7 +40,7 @@ const items = [
     contents: [
       {
         label: "Lakip 2024",
-        href: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/uploads/LAKIP_BAPENDA_2024_3fc13ed528.pdf`,
+        href: `${process.env.MINIO_BASE_URL}/LAKIP_BAPENDA_2024_1_8d3115b0fb.pdf`,
       },
     ],
   },

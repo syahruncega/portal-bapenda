@@ -39,14 +39,14 @@ const HeroContent: FC<{ data: any }> = ({ data }) => {
                 {data?.map((item: any) => (
                   <CarouselItem key={item.id}>
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${item.image.url}`}
+                      src={`${item.image.url}`}
                       alt={item.title}
                       width={2564}
                       height={1136}
                       quality={100}
                       className="rounded-2xl border-2 border-white"
                       placeholder="blur"
-                      blurDataURL={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${item.image.url}`}
+                      blurDataURL={`${item.image.url}`}
                     />
                   </CarouselItem>
                 ))}
